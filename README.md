@@ -30,3 +30,12 @@ From the command line:
 2. `cd Efficient-Entities`
 3. `.\gradlew build`
 4. The compiled jar file will be in the folder `build/libs/`
+
+---
+
+### Credits
+
+Efficient Entities Continued is based on the original **Efficient Entities** project by Michael Sebero.
+
+Original project:
+https://github.com/Michael-Sebero/Efficient-Entities
