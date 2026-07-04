@@ -28,5 +28,5 @@ From the command line:
 
 1. `git clone https://github.com/seeedl1ng/Efficient-Entities.git`
 2. `cd Efficient-Entities`
-3. `./gradlew build`
+3. `.\gradlew build`
 4. The compiled jar file will be in the folder `build/libs/`
