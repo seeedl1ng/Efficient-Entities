@@ -11,15 +11,12 @@ import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
+import com.michaelsebero.efficiententities.efficiententities.Tags;
 
-@Mod(modid = EfficientEntities.MOD_ID, name = EfficientEntities.MOD_NAME, version = EfficientEntities.VERSION, acceptableRemoteVersions = "*")
+@Mod(modid = Tags.MOD_ID, name = Tags.MOD_NAME, version = Tags.VERSION, acceptableRemoteVersions = "*")
 public class EfficientEntities {
 
-    public static final String MOD_ID   = "efficiententities";
-    public static final String MOD_NAME = "Efficient Entities";
-    public static final String VERSION  = "V1";
-
-    public static final Logger LOG = LogManager.getLogger(MOD_ID);
+    public static final Logger LOG = LogManager.getLogger(Tags.MOD_ID);
 
     @EventHandler
     public void onConstruction(FMLConstructionEvent event) {

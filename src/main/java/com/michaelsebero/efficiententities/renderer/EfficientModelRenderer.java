@@ -9,6 +9,7 @@ import java.util.WeakHashMap;
 import java.util.function.Supplier;
 
 import com.michaelsebero.efficiententities.EfficientEntities;
+import com.michaelsebero.efficiententities.EEConfig;
 import com.michaelsebero.efficiententities.opengl.GpuSync;
 import com.michaelsebero.efficiententities.opengl.PersistentBuffer;
 import com.michaelsebero.efficiententities.opengl.VaoHelper;
@@ -106,7 +107,6 @@ public class EfficientModelRenderer {
         | GL30.GL_MAP_UNSYNCHRONIZED_BIT;
 
     private static final float RAD_TO_DEG      = (float) (180.0 / Math.PI);
-    private static final int   LOG_PERIOD_FRAMES = 200;
 
     // ------------------------------------------------------------------ Unsafe
 
@@ -309,18 +309,26 @@ public class EfficientModelRenderer {
             currentAddr = sliceAddrs[currentSlice];
         }
 
-        vertexCount = 0;
-        batchStart  = 0;
-        inBatch     = false;
+		vertexCount = 0;
+		batchStart  = 0;
+		inBatch     = false;
 
-        if (++frameCount % LOG_PERIOD_FRAMES == 0) {
-            EfficientEntities.LOG.info(
-                "[EfficientEntities] Last {} frames: {} batches, {} cubes, {} auto-wrapped.",
-                LOG_PERIOD_FRAMES,
-                batchesThisPeriod, cubesThisPeriod, autoWrapsThisPeriod);
-            batchesThisPeriod = cubesThisPeriod = autoWrapsThisPeriod = 0;
-        }
-    }
+		frameCount++;
+
+		int period = EEConfig.logPeriodFrames;
+
+		if (period > 0 && frameCount % period == 0) {
+			EfficientEntities.LOG.info(
+				"Last {} frames: {} batches, {} cubes, {} auto-wrapped.",
+				period,
+				batchesThisPeriod,
+				cubesThisPeriod,
+				autoWrapsThisPeriod
+			);
+
+			batchesThisPeriod = cubesThisPeriod = autoWrapsThisPeriod = 0;
+		}
+}
 
     public void finishFrame() {
         if (!initialised || !gpuPath) return;
