@@ -5,6 +5,8 @@
 
 https://github.com/users/seeedl1ng/projects/6
 
+<hr>
+
 ### Build:
 
 * Нужна Java 25 JDK
